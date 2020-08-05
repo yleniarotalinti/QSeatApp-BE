@@ -44,7 +44,7 @@ public class EmbededDBConfig {
     }
 
     private void createBookings(){
-        bookingRepository.save(new Booking("2020-05-18", "Corso Milano", "P1-1", "Matteo Colella"));
-        bookingRepository.save(new Booking("2020-05-21", "Corso Milano", "P1-2", "Ylenia Rotalinti"));
+        bookingRepository.save(new Booking("2020-05-18", "Corso Milano", "P1-1", "matteo.colella@quantyca.it"));
+        bookingRepository.save(new Booking("2020-05-21", "Corso Milano", "P1-2", "ylenia.rotalinti@quantyca.it"));
     }
 }

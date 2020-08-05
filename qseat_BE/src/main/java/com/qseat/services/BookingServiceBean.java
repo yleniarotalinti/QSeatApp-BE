@@ -7,6 +7,8 @@ import com.qseat.domain.repositories.StationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookingServiceBean implements BookingService{
 
@@ -29,18 +31,8 @@ public class BookingServiceBean implements BookingService{
     }
 
     @Override
-    public Booking findByIds(String data_prenotazione, String sede, String postazione_scrivania) {
-        Iterable<Booking> entitiesIterable = repository.findAll();
-        Booking entity = new Booking();
-        for (Booking b:entitiesIterable){
-            if (b.getData_prenotazione().compareTo(data_prenotazione)==0 &&
-               b.getPostazione_scrivania().compareTo(postazione_scrivania)==0 &&
-                b.getSede().compareTo(sede)==0){
-                entity = b;
-            } else {
-                //throw new Exception (no prenotazione con quei valori)
-            }
-        }
-        return entity;
+    public List<Booking> findByIds(String data_prenotazione, String sede, String postazione_scrivania, String risorsa) {
+        List<Booking> entities = repository.findbyFilters(data_prenotazione, sede, postazione_scrivania, risorsa);
+        return entities;
     }
 }

@@ -7,4 +7,5 @@ import java.util.List;
 public interface PersonService {
     Iterable<Person> findAll();
     List<Person> findCurrentEmployeers();
+    Person findByEmail(String email);
 }

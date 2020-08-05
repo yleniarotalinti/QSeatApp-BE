@@ -7,6 +7,7 @@ import com.qseat.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +26,7 @@ public class PersonController {
     @Autowired
     modelMapper mapper;
 
-    //find all employers
+    //find all employers by nome and cognome
     @RequestMapping(method= RequestMethod.GET,
                     produces = {MediaType.APPLICATION_JSON_VALUE})
     public List<PersonResource> getAll(@RequestParam(name="nome", required = false) String nome,
@@ -42,5 +43,15 @@ public class PersonController {
             }
         }
         return resources;
+    }
+
+    //find all employers by email
+    @RequestMapping(method= RequestMethod.GET,
+            produces = {MediaType.APPLICATION_JSON_VALUE},
+            params = "email")
+    public PersonResource getAllbyEmail(@RequestParam(name="email", required = true) String email){
+        Person entity = service.findByEmail(email);
+        PersonResource resource = mapper.personToPersonResource(entity);
+        return resource;
     }
 }

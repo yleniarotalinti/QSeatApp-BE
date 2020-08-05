@@ -37,24 +37,11 @@ public class BookingController {
     public List<BookingResource> getAll(@RequestParam(name="data", required = false) String data,
                                         @RequestParam(name="sede", required = false) String sede,
                                         @RequestParam(name="piano", required = false) String piano,
-                                        @RequestParam(name="nome", required = false) String nome,
-                                        @RequestParam(name="cognome", required = false) String cognome){
-        Iterable<Booking> entities = service.findAll();
+                                        @RequestParam(name="risorsa", required = false) String risorsa){
+        List<Booking> entities = service.findByIds(data,sede,piano,risorsa);
         List<BookingResource> resources = new ArrayList<BookingResource>();
         for (Booking b:entities){
-            String nomeRisorsa = b.getRisorsa().split(" ")[0];
-            String cognomeRisorsa = b.getRisorsa().split(" ")[1];
-            if (data !=null && sede !=null && piano!=null && nome != null && cognome != null){
-                if (b.getData_prenotazione().compareTo(data)==0 &&
-                    b.getSede().compareTo(sede)==0 &&
-                    b.getPostazione_scrivania().compareTo(piano)==0 &&
-                    nomeRisorsa.compareTo(nome)==0 &&
-                    cognomeRisorsa.compareTo(cognome)==0){
                     resources.add(mapper.bookingToBookingResource(b));
-                }
-            } else {
-                resources.add(mapper.bookingToBookingResource(b));
-            }
         }
         return resources;
     }
@@ -71,11 +58,14 @@ public class BookingController {
 
     //DELETE: cancellazione di una prenotazione
     @RequestMapping(method=RequestMethod.DELETE,
-            produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Void> delete(@RequestParam(name="data", required = false) String data,
-                                       @RequestParam(name="sede", required = false) String sede,
-                                       @RequestParam(name="piano", required = false) String piano) {
-        Booking b = service.findByIds(data, sede, piano);
+            produces=MediaType.APPLICATION_JSON_VALUE,
+            params = { "data_prenotazione", "sede","postazione_scrivania", "risorsa"})
+    public ResponseEntity<Void> delete(@RequestParam(name="data_prenotazione", required = true) String data_prenotazione,
+                                       @RequestParam(name="sede", required = true) String sede,
+                                       @RequestParam(name="postazione_scrivania", required = true) String postazione_scrivania,
+                                       @RequestParam(name="risorsa", required = true) String risorsa) {
+        List<Booking> bookings = service.findByIds(data_prenotazione, sede, postazione_scrivania, risorsa);
+        Booking b = bookings.get(0); //avrò solamente una prenotazione con quei specifici campi
         service.delete(b);
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }

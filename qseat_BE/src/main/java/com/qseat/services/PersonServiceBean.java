@@ -3,6 +3,8 @@ package com.qseat.services;
 import com.qseat.domain.entities.Person;
 import com.qseat.domain.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,4 +32,11 @@ public class PersonServiceBean implements PersonService{
         }
         return entities;
     }
+
+    @Override
+    public Person findByEmail(String email) {
+        Person p = repository.findbyEmail(email);
+        return p ;
+    }
+
 }

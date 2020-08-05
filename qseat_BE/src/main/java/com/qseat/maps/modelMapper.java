@@ -14,6 +14,5 @@ public interface modelMapper {
     StationResource stationToStationResource(Station station);
 
     Booking bookingResourceToBooking(BookingResource bookingResource);
-
     BookingResource bookingToBookingResource(Booking b);
 }
