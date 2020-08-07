@@ -2,6 +2,7 @@ package com.qseat.web;
 
 import com.qseat.domain.entities.Person;
 import com.qseat.maps.modelMapper;
+import com.qseat.maps.modelMapper1;
 import com.qseat.resources.PersonResource;
 import com.qseat.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class PersonController {
     @Autowired
     PersonService service ;
 
-    @Autowired
-    modelMapper mapper;
+    //@Autowired
+    modelMapper1 mapper=new modelMapper1();
 
     //find all employers by nome and cognome
     @CrossOrigin(origins = "http://localhost:3000")

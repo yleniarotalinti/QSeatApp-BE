@@ -1,9 +1,14 @@
 package com.qseat.resources;
 
 
+import com.qseat.domain.entities.Booking;
+
+import java.util.List;
+
 public class PersonResource {
     private String email, nome_breve, nome_esteso, nome, cognome,
                     ruolo, data_assunzione, data_uscita, insert_timestamp;
+    private List<Booking> bookings;
 
     public String getEmail() {
         return email;
@@ -75,5 +80,13 @@ public class PersonResource {
 
     public void setInsert_timestamp(String insert_timestamp) {
         this.insert_timestamp = insert_timestamp;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

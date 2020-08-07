@@ -3,6 +3,7 @@ package com.qseat.web;
 import com.qseat.domain.entities.Person;
 import com.qseat.domain.entities.Station;
 import com.qseat.maps.modelMapper;
+import com.qseat.maps.modelMapper1;
 import com.qseat.resources.PersonResource;
 import com.qseat.resources.StationResource;
 import com.qseat.services.PersonService;
@@ -25,8 +26,8 @@ public class StationController {
     @Autowired
     StationService service ;
 
-    @Autowired
-    modelMapper mapper;
+    //@Autowired
+    modelMapper1 mapper=new modelMapper1();
 
     //getter delle postazioni
     @CrossOrigin(origins = "http://localhost:3000")

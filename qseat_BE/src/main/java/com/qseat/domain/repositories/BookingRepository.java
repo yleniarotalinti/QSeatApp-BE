@@ -11,8 +11,8 @@ public interface BookingRepository extends PagingAndSortingRepository<Booking, S
 
     @Query("SELECT b FROM Booking b WHERE (:data_prenotazione is null or b.data_prenotazione = :data_prenotazione)"
             +"and (:sede is null or b.sede = :sede)"
-            + "and (:postazione_scrivania is null or b.station = :postazione_scrivania)"
-            + "and (:risorsa is null or b.person = :risorsa)")
+            + "and (:postazione_scrivania is null or b.station.id_postazione = :postazione_scrivania)"
+            + "and (:risorsa is null or b.person.email = :risorsa)")
     List<Booking> findbyFilters(@Param("data_prenotazione") String data_prenotazione,
                                 @Param("sede") String sede,
                                 @Param("postazione_scrivania") String postazione_scrivania,

@@ -2,6 +2,7 @@ package com.qseat.web;
 
 import com.qseat.domain.entities.Booking;
 import com.qseat.maps.modelMapper;
+import com.qseat.maps.modelMapper1;
 import com.qseat.resources.BookingResource;
 import com.qseat.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class BookingController {
     @Autowired
     BookingService service;
 
-    @Autowired
-    modelMapper mapper;
+    //@Autowired
+    modelMapper1 mapper=new modelMapper1();
 
     //filtraggio prenotazioni
     @RequestMapping(method= RequestMethod.GET,
