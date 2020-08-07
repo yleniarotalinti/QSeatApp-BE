@@ -1,70 +1,82 @@
 package com.qseat.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @IdClass(CompositeKey.class)
 @Table(name="PRENOTAZIONI")
 public class Booking {
-    @Id
-    @Column(name="data_prenotazione", nullable=false)
-    private String data_prenotazione;
 
     @Id
-    @Column(name="sede", nullable=false)
-    private String sede;
+    @Column(name="data_prenotazione")
+    public String data_prenotazione;
 
     @Id
-    @Column(name="postazione_scrivania", nullable=false)
-    private String postazione_scrivania;
+    @Column(name="sede")
+    public String sede;
 
-    @Column(name="risorsa", nullable=false)
-    private String risorsa;
+    @Id
+    @ManyToOne
+    @JsonBackReference
+    public Station station ;
+
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn(name="email")
+    public Person person;
 
     public Booking(){
 
     }
 
-    public Booking(String data_prenotazione, String sede, String postazione_scrivania, String risorsa) {
+    public Booking(String data_prenotazione, String sede, Station station, Person person) {
         this.data_prenotazione = data_prenotazione;
         this.sede = sede;
-        this.postazione_scrivania = postazione_scrivania;
-        this.risorsa = risorsa;
+        this.station = station;
+        this.person = person;
     }
 
     public String getData_prenotazione() {
         return data_prenotazione;
     }
 
-    public String getSede() {
-        return sede;
-    }
-
-    public String getPostazione_scrivania() {
-        return postazione_scrivania;
-    }
-
-    public String getRisorsa() {
-        return risorsa;
-    }
-
     public void setData_prenotazione(String data_prenotazione) {
         this.data_prenotazione = data_prenotazione;
+    }
+
+    public String getSede() {
+        return sede;
     }
 
     public void setSede(String sede) {
         this.sede = sede;
     }
 
-    public void setPostazione_scrivania(String postazione_scrivania) {
-        this.postazione_scrivania = postazione_scrivania;
+    public Station getStation() {
+        return station;
     }
 
-    public void setRisorsa(String risorsa) {
-        this.risorsa = risorsa;
+    public void setStation(Station station) {
+        this.station = station;
     }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+
 }

@@ -1,9 +1,14 @@
 package com.qseat.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="POSTAZIONI")
@@ -24,6 +29,10 @@ public class Station {
 
     @Column(name="piano", nullable=true)
     private String piano;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "station")
+    private  List<Booking> bookings;
 
     public Station(){
 
@@ -75,5 +84,13 @@ public class Station {
 
     public void setPiano(String piano) {
         this.piano = piano;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

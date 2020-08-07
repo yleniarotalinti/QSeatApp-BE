@@ -1,9 +1,15 @@
 package com.qseat.domain.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="ANAGRAFICA")
@@ -36,6 +42,10 @@ public class Person {
 
     @Column(name="insert_timestamp", nullable=true)
     private String insert_timestamp;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy="person")
+    List<Booking> bookings;
 
     public Person() {
     }
@@ -125,5 +135,13 @@ public class Person {
 
     public void setInsert_timestamp(String insert_timestamp) {
         this.insert_timestamp = insert_timestamp;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

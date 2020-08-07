@@ -10,4 +10,8 @@ public interface BookingService {
     Booking create(Booking booking);
     void delete(Booking booking);
     List<Booking> findByIds(String data_prenotazione, String sede, String postazione_scrivania, String risorsa);
+
+/*
+    List<BookingStations> findAvailability(String piano, String data);
+*/
 }

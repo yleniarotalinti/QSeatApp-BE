@@ -13,6 +13,7 @@ public interface modelMapper {
     PersonResource personToPersonResource(Person person);
     StationResource stationToStationResource(Station station);
 
-    Booking bookingResourceToBooking(BookingResource bookingResource);
-    BookingResource bookingToBookingResource(Booking b);
+   BookingResource bookingToBookingResource(Booking b);
+   Booking bookingResourceToBooking (BookingResource b);
+
 }

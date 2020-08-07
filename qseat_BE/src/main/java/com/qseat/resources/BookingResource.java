@@ -1,7 +1,13 @@
 package com.qseat.resources;
 
+import com.qseat.domain.entities.Person;
+import com.qseat.domain.entities.Station;
+
 public class BookingResource {
-    private String data_prenotazione, sede, postazione_scrivania, risorsa ;
+    private String data_prenotazione, sede ;
+    private Station postazione;
+    private Person risorsa;
+
 
     public String getData_prenotazione() {
         return data_prenotazione;
@@ -11,13 +17,6 @@ public class BookingResource {
         return sede;
     }
 
-    public String getPostazione_scrivania() {
-        return postazione_scrivania;
-    }
-
-    public String getRisorsa() {
-        return risorsa;
-    }
 
     public void setData_prenotazione(String data_prenotazione) {
         this.data_prenotazione = data_prenotazione;
@@ -27,11 +26,19 @@ public class BookingResource {
         this.sede = sede;
     }
 
-    public void setPostazione_scrivania(String postazione_scrivania) {
-        this.postazione_scrivania = postazione_scrivania;
+    public Station getPostazione() {
+        return this.postazione;
     }
 
-    public void setRisorsa(String risorsa) {
+    public void setPostazione(Station postazione) {
+        this.postazione = postazione;
+    }
+
+    public Person getRisorsa() {
+        return this.risorsa;
+    }
+
+    public void setRisorsa(Person risorsa) {
         this.risorsa = risorsa;
     }
 }
