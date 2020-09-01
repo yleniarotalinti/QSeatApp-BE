@@ -65,6 +65,10 @@ public class Person {
         this.data_uscita = data_uscita;
     }
 
+    public Person(String email) {
+        this.email = email;
+    }
+
     public String getEmail() {
         return email;
     }

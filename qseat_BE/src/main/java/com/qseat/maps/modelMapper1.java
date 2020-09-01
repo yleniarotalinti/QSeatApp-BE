@@ -64,6 +64,8 @@ public class modelMapper1 {
         return bookingResource;
     }
 
+
+
     public Booking bookingResourceToBooking(BookingResource b) {
         if ( b == null ) {
             return null;

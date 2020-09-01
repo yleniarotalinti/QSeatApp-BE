@@ -3,6 +3,7 @@ package com.qseat.resources;
 import com.qseat.domain.entities.Person;
 import com.qseat.domain.entities.Station;
 
+
 public class BookingResource {
     private String data_prenotazione, sede ;
     private Station postazione;
@@ -41,4 +42,13 @@ public class BookingResource {
     public void setRisorsa(Person risorsa) {
         this.risorsa = risorsa;
     }
+
+    public BookingResource(String data_prenotazione, String sede, Station postazione, Person risorsa) {
+        this.data_prenotazione = data_prenotazione;
+        this.sede = sede;
+        this.postazione = postazione;
+        this.risorsa = risorsa;
+    }
+
+    public BookingResource(){};
 }

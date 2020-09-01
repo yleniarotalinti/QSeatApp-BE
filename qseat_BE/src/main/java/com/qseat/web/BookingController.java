@@ -1,6 +1,8 @@
 package com.qseat.web;
 
 import com.qseat.domain.entities.Booking;
+import com.qseat.domain.entities.Person;
+import com.qseat.domain.entities.Station;
 import com.qseat.maps.modelMapper;
 import com.qseat.maps.modelMapper1;
 import com.qseat.resources.BookingResource;
@@ -31,6 +33,7 @@ public class BookingController {
     modelMapper1 mapper=new modelMapper1();
 
     //filtraggio prenotazioni
+    @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping(method= RequestMethod.GET,
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public List<BookingResource> getAll(@RequestParam(name="data", required = false) String data,
@@ -45,7 +48,7 @@ public class BookingController {
         return resources;
     }
 
-    //POST: aggiunta di una nuova prenotazione
+    //POST: aggiunta di una nuova prenotazione (with the Request body, it doesn't work)
     @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping(method=RequestMethod.POST,
             consumes=MediaType.APPLICATION_JSON_VALUE)
@@ -55,6 +58,20 @@ public class BookingController {
         entity = service.create(entity);
         return mapper.bookingToBookingResource(entity);
     }
+
+/*    //POST: aggiunta di una nuova prenotazione
+    @CrossOrigin(origins = "http://localhost:3000")
+    @RequestMapping(method=RequestMethod.POST,
+            consumes=MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public BookingResource newPost(@RequestParam(name="data_prenotazione", required = true) String data_prenotazione,
+                                   @RequestParam(name="postazione_scrivania", required = true) String postazione_scrivania,
+                                   @RequestParam(name="risorsa", required = true) String risorsa) {
+        Booking entity = mapper.bookingResourceToBooking(new BookingResource(data_prenotazione, new Station(postazione_scrivania), new Person(risorsa)));
+        entity = service.create(entity);
+        return mapper.bookingToBookingResource(entity);
+    }*/
+
 
     //DELETE: cancellazione di una prenotazione
     @CrossOrigin(origins = "http://localhost:3000")

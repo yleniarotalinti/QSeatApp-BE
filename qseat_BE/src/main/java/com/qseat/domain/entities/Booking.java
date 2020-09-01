@@ -39,7 +39,7 @@ public class Booking {
 
     }
 
-    public Booking(String data_prenotazione, String sede, Station station, Person person) {
+   public Booking(String data_prenotazione, String sede, Station station, Person person) {
         this.data_prenotazione = data_prenotazione;
         this.sede = sede;
         this.station = station;

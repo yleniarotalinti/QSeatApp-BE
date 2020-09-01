@@ -30,7 +30,7 @@ public class Station {
     @Column(name="piano", nullable=true)
     private String piano;
 
-    @JsonManagedReference
+    //@JsonManagedReference
     @OneToMany(mappedBy = "station")
     private  List<Booking> bookings;
 
@@ -44,6 +44,10 @@ public class Station {
         this.destinazione = destinazione;
         this.sede = sede;
         this.piano = piano;
+    }
+
+    public Station(String id_postazione) {
+        this.id_postazione = id_postazione;
     }
 
     public String getId_postazione() {
