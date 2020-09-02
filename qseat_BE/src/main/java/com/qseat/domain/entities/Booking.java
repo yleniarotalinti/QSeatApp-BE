@@ -70,6 +70,8 @@ public class Booking {
         this.station = station;
     }
 
+    public void setStation(String id_station){ this.station = new Station(id_station);}
+
     public Person getPerson() {
         return person;
     }
@@ -78,5 +80,5 @@ public class Booking {
         this.person = person;
     }
 
-
+    public void setPerson(String email){ this.person = new Person(email);}
 }

@@ -4,6 +4,7 @@ import com.qseat.domain.entities.Booking;
 import com.qseat.domain.entities.Person;
 import com.qseat.domain.entities.Station;
 import com.qseat.resources.BookingResource;
+import com.qseat.resources.BookingResourceNew;
 import com.qseat.resources.PersonResource;
 import com.qseat.resources.StationResource;
 
@@ -67,6 +68,21 @@ public class modelMapper1 {
 
 
     public Booking bookingResourceToBooking(BookingResource b) {
+        if ( b == null ) {
+            return null;
+        }
+
+        Booking booking = new Booking();
+
+        booking.setData_prenotazione( b.getData_prenotazione() );
+        booking.setSede( b.getSede() );
+        booking.setPerson(b.getRisorsa());
+        booking.setStation(b.getPostazione());
+
+        return booking;
+    }
+
+    public Booking bookingResourceNewToBooking(BookingResourceNew b) {
         if ( b == null ) {
             return null;
         }

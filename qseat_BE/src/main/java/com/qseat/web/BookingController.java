@@ -6,6 +6,7 @@ import com.qseat.domain.entities.Station;
 import com.qseat.maps.modelMapper;
 import com.qseat.maps.modelMapper1;
 import com.qseat.resources.BookingResource;
+import com.qseat.resources.BookingResourceNew;
 import com.qseat.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -53,8 +54,8 @@ public class BookingController {
     @RequestMapping(method=RequestMethod.POST,
             consumes=MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public BookingResource post(@RequestBody BookingResource resource) {
-        Booking entity = mapper.bookingResourceToBooking(resource);
+    public BookingResource post(@RequestBody BookingResourceNew resource) {
+        Booking entity = mapper.bookingResourceNewToBooking(resource);
         entity = service.create(entity);
         return mapper.bookingToBookingResource(entity);
     }
