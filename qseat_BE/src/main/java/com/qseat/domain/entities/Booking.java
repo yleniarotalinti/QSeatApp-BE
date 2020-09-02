@@ -28,11 +28,12 @@ public class Booking {
     @Id
     @ManyToOne
     @JsonBackReference
+    @JoinColumn(name = "postazione_scrivania", referencedColumnName="id_postazione")
     public Station station ;
 
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name="email")
+    @JoinColumn(name="risorsa", referencedColumnName="email")
     public Person person;
 
     public Booking(){

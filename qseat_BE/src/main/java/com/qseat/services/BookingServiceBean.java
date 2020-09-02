@@ -11,26 +11,26 @@ import java.util.List;
 public class BookingServiceBean implements BookingService{
 
     @Autowired
-    BookingRepository repository;
+    BookingRepository bookingRepository;
 
     @Override
     public Iterable<Booking> findAll() {
-        return repository.findAll();
+        return bookingRepository.findAll();
     }
 
     @Override
     public Booking create(Booking booking) {
-        return repository.save(booking);
+        return bookingRepository.save(booking);
     }
 
     @Override
     public void delete(Booking booking) {
-        repository.delete(booking);
+        bookingRepository.delete(booking);
     }
 
     @Override
     public List<Booking> findByIds(String data_prenotazione, String sede, String postazione_scrivania, String risorsa) {
-        List<Booking> entities = repository.findbyFilters(data_prenotazione, sede, postazione_scrivania, risorsa);
+        List<Booking> entities = bookingRepository.findbyFilters(data_prenotazione, sede, postazione_scrivania, risorsa);
         return entities;
     }
 

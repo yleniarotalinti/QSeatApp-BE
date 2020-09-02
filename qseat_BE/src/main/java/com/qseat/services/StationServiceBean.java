@@ -11,20 +11,20 @@ import java.util.List;
 public class StationServiceBean implements StationService{
 
     @Autowired
-    StationRepository repository;
+    StationRepository stationRepository;
 
     @Override
     public Iterable<Station> findAll() {
-        return repository.findAll();
+        return stationRepository.findAll();
     }
 
     @Override
     public List<String> findLevels() {
-        return repository.findByLevels();
+        return stationRepository.findByLevels();
     }
 
     @Override
     public List<Station> findStationsByLevel(String piano) {
-        return repository.findStationsByLevel(piano);
+        return stationRepository.findStationsByLevel(piano);
     }
 }

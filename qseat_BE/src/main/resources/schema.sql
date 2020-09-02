@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS ANAGRAFICA;
 
-CREATE TABLE ANAGRAFICA (
+CREATE TABLE ANAGRAFICA1 (
     email varchar(255) PRIMARY KEY,
     nome_breve varchar(255),
     nome_esteso varchar(255),
@@ -12,7 +12,7 @@ CREATE TABLE ANAGRAFICA (
     insert_timestamp varchar(255)
 );
 
-CREATE TABLE POSTAZIONI (
+CREATE TABLE POSTAZIONI1 (
     id_postazione varchar(255) PRIMARY KEY,
     flag_prenotabile boolean,
     destinazione varchar(255),
@@ -21,7 +21,7 @@ CREATE TABLE POSTAZIONI (
     );
 
 
-CREATE TABLE PRENOTAZIONI (
+CREATE TABLE PRENOTAZIONI1 (
 	data_prenotazione varchar(255),
 	sede varchar(255),
 	id_postazione varchar(255),
