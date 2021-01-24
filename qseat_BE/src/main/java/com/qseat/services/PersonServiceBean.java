@@ -24,9 +24,10 @@ public class PersonServiceBean implements PersonService{
         Iterable<Person> entitiesIterable = personRepository.findAll();
         List<Person> entities = new ArrayList<Person>();
         for (Person p:entitiesIterable){
-            if (p.getData_uscita() == null ){
+            /*if (p.getData_uscita() == null ){
                 entities.add(p);
-            }
+            }*/
+            entities.add(p);
         }
         return entities;
     }

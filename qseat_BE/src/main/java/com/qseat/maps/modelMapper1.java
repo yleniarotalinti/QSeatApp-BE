@@ -59,8 +59,8 @@ public class modelMapper1 {
 
         bookingResource.setData_prenotazione( b.getData_prenotazione() );
         bookingResource.setSede( b.getSede() );
-        bookingResource.setPostazione(b.getStation());
-        bookingResource.setRisorsa(b.getPerson());
+        bookingResource.setPostazione(b.getPostazione_scrivania());
+        bookingResource.setRisorsa(b.getRisorsa());
 
         return bookingResource;
     }
@@ -76,8 +76,8 @@ public class modelMapper1 {
 
         booking.setData_prenotazione( b.getData_prenotazione() );
         booking.setSede( b.getSede() );
-        booking.setPerson(b.getRisorsa());
-        booking.setStation(b.getPostazione());
+        booking.setRisorsa(b.getRisorsa());
+        booking.setPostazione_scrivania(b.getPostazione());
 
         return booking;
     }

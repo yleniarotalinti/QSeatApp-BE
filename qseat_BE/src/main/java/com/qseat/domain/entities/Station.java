@@ -31,7 +31,7 @@ public class Station {
     private String piano;
 
     //@JsonManagedReference
-    @OneToMany(mappedBy = "station")
+    @OneToMany(mappedBy = "postazione_scrivania")
     private  List<Booking> bookings;
 
     public Station(){

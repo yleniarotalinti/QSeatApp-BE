@@ -44,7 +44,7 @@ public class Person {
     private String insert_timestamp;
 
     @JsonManagedReference
-    @OneToMany(mappedBy="person")
+    @OneToMany(mappedBy="risorsa")
     List<Booking> bookings;
 
     public Person() {
